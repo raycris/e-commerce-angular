@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -6,10 +6,16 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './product.component.html',
-  styleUrl: './product.component.css'
+  styleUrl: './product.component.css',
 })
 export class ProductComponent {
-@Input({required: true}) img: string = '';
-@Input({required: true}) price: number = 0;
-@Input({required: true}) title: string = '';
+  @Input({ required: true }) img: string = '';
+  @Input({ required: true }) price: number = 0;
+  @Input({ required: true }) title: string = '';
+
+  @Output() addToCart = new EventEmitter();
+  addToCartHandler() {
+    console.log('click from chlid');
+    this.addToCart.emit('Mesaje desde el hijo' + this.title);
+  }
 }
