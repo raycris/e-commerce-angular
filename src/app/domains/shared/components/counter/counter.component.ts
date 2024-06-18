@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChange } from '@angular/core';
+import { Component, Input, SimpleChange, signal } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
@@ -10,41 +10,46 @@ import { Component, Input, SimpleChange } from '@angular/core';
 export class CounterComponent {
   @Input({ required: true }) duration: number = 0;
   @Input({ required: true }) message: string = '';
+  counter = signal(0);
+  counterRef: number | undefined;
 
-  constructor(){
+  constructor() {
     // No Async
     // before render
-    console.log("constructor");
-    console.log("-".repeat(10));
-
+    console.log('constructor');
+    console.log('-'.repeat(10));
   }
 
-  ngOnChanges(changes: SimpleChange){
+  ngOnChanges(changes: SimpleChange) {
     // before and during render
-    console.log("ngOnChanges");
-    console.log("-".repeat(10));
+    console.log('ngOnChanges');
+    console.log('-'.repeat(10));
     console.log(changes);
   }
 
-  ngOnInit(){
+  ngOnInit() {
     // after render
     // una vez
     // async, then, subs
-    console.log("ngOnInit")
-    console.log("-".repeat(10));
-    console.log("duration =>", this.duration)
-    console.log("message =>", this.message)
+    console.log('ngOnInit');
+    console.log('-'.repeat(10));
+    console.log('duration =>', this.duration);
+    console.log('message =>', this.message);
+    this.counterRef = window.setInterval(() => {
+      this.counter.update((statePrev) => statePrev + 1);
+    }, 1000);
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     // after render
     //  hijos ya fueron rederizados/pintados
-    console.log("ngAfterViewInit")
-    console.log("-".repeat(10));
+    console.log('ngAfterViewInit');
+    console.log('-'.repeat(10));
   }
 
-  ngOnDestroy(){
-    console.log("ngAfterViewInit")
-    console.log("-".repeat(10));
+  ngOnDestroy() {
+    console.log('ngAfterViewInit');
+    console.log('-'.repeat(10));
+    window.clearInterval(this.counterRef)
   }
 }
