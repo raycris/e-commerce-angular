@@ -21,8 +21,30 @@ export class CounterComponent {
 
   ngOnChanges(changes: SimpleChange){
     // before and during render
-    console.log("constructor");
+    console.log("ngOnChanges");
     console.log("-".repeat(10));
     console.log(changes);
+  }
+
+  ngOnInit(){
+    // after render
+    // una vez
+    // async, then, subs
+    console.log("ngOnInit")
+    console.log("-".repeat(10));
+    console.log("duration =>", this.duration)
+    console.log("message =>", this.message)
+  }
+
+  ngAfterViewInit(){
+    // after render
+    //  hijos ya fueron rederizados/pintados
+    console.log("ngAfterViewInit")
+    console.log("-".repeat(10));
+  }
+
+  ngOnDestroy(){
+    console.log("ngAfterViewInit")
+    console.log("-".repeat(10));
   }
 }
