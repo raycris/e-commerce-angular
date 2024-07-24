@@ -1,17 +1,21 @@
-<div class="px-2.5">
-  <h1 class="text-lg font-bold">About</h1>
-  <p class="text-xs">
-    Lorem ipsum dolor sit amet <span highlight>consectetur adipisicing elit</span> . Omnis, magnam? Ut
-    nulla dolore quae hic voluptatibus asperiores possimus velit consectetur
-    perferendis, quod ratione quos aliquid aperiam, corrupti exercitationem
-    fugiat delectus.
-  </p>
 
-  <p class="text-xs">
-    Numero de clientes
-    <app-counter [duration]="duration()" [message]="message()" *ngIf="duration() > 0"/>
-  </p>
-  <div>
-    <app-wave-audio audioUrl="assets/dembow.mp3"/>
+<div class="container mx-auto">
+  <app-header />
+  <div >
+    <h1 class="text-lg font-bold">About</h1>
+    <p class="text-xs">
+      Lorem ipsum dolor sit amet <span highlight>consectetur adipisicing elit</span> . Omnis, magnam? Ut
+      nulla dolore quae hic voluptatibus asperiores possimus velit consectetur
+      perferendis, quod ratione quos aliquid aperiam, corrupti exercitationem
+      fugiat delectus.
+    </p>
+
+    <p class="text-xs">
+      Numero de clientes
+      <app-counter [duration]="duration()" [message]="message()" *ngIf="duration() > 0"/>
+    </p>
+    <div>
+      <app-wave-audio audioUrl="assets/dembow.mp3"/>
+    </div>
   </div>
 </div>
